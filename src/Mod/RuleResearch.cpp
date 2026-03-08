@@ -95,13 +95,18 @@ void RuleResearch::afterLoad(const Mod* mod)
 		// FIXME: this would break all mods unfortunately, maybe one day...
 		//mod->linkRule(_neededItem, _neededItemName.empty() ? _name : _neededItemName);
 
+		const auto* linkedByName = mod->getItem(_name, false); // false, because even vanilla ruleset is a mess
 		if (_neededItemName.empty())
 		{
-			_neededItem = mod->getItem(_name, false); // false, because even vanilla ruleset is a mess
+			_neededItem = linkedByName;
 		}
 		else
 		{
 			_neededItem = mod->getItem(_neededItemName, true);
+		}
+		if (_neededItem && linkedByName && linkedByName != _neededItem)
+		{
+			throw LoadRuleException(_name, "Conflict between researched item '" + _name + "' and needed item '" + _neededItemName + "'");
 		}
 	}
 
