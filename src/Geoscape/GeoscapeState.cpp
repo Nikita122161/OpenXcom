@@ -2479,20 +2479,7 @@ void GeoscapeState::time1Day()
 			xbase->removeResearch(project);
 			project = nullptr;
 
-			// 3b. handle interrogation
-			if (Options::retainCorpses && research->needItem() && research->destroyItem())
-			{
-				auto* ruleUnit = mod->getUnit(research->getName(), false); // don't use getNeededItem()
-				if (ruleUnit)
-				{
-					auto* ruleCorpse = ruleUnit->getArmor()->getCorpseGeoscape();
-					if (ruleCorpse && ruleCorpse->isRecoverable() && ruleCorpse->isCorpseRecoverable())
-					{
-						xbase->getStorageItems()->addItem(ruleCorpse);
-					}
-				}
-			}
-			// 3bb. add core research to research diary (before the getonefrees)
+			// 3b. add core research to research diary (before the getonefrees)
 			addResearchDiaryEntryForBase(research, DiscoverySourceType::BASE, xbase, nullptr);
 			RuleResearch* lookupResearch = mod->getResearch(research->getLookup(), true);
 			if (lookupResearch)

@@ -67,6 +67,7 @@ void RuleResearch::load(const YAML::YamlNodeReader& node, Mod* mod, const ModScr
 	mod->loadNameNull(_name, _neededItemName, reader["neededItem"]);
 	reader.tryRead("needItem", _needItem);
 	reader.tryRead("destroyItem", _destroyItem);
+	reader.tryRead("returnsItem", _returnsItem);
 	reader.tryRead("unlockFinalMission", _unlockFinalMission);
 	reader.tryRead("repeatable", _repeatable);
 	reader.tryRead("listOrder", _listOrder);

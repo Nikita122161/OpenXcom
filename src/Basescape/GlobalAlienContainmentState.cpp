@@ -176,7 +176,7 @@ void GlobalAlienContainmentState::fillPrisonerList()
 			{
 				const RuleResearch* research = proj->getRules();
 				const RuleItem* item = research->getNeededItem();
-				if (research->needItem() && research->destroyItem() && item && item->isAlien() && item->getPrisonType() == prisonType)
+				if (research->isHoldingNeededItem() && item && item->isAlien() && item->getPrisonType() == prisonType)
 				{
 					researchList.push_back(research->getName());
 				}
