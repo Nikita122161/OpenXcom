@@ -528,6 +528,10 @@ void Unit::ScriptRegister(ScriptParserBase* parser)
 	Bind<Unit> un = { parser };
 
 	un.add<&getTypeScript>("getType");
+	un.add<&Unit::getSpawnUnit>("getSpawnUnit");
+	un.add<&Unit::getCivilianRecoveryItemType>("getCivilianRecoveryItemType");
+	// un.add<&Unit::getCivilianRecoverySoldierType>("getCivilianRecoverySoldierType"); //TODO: add `RuleSoldier` to scripts
+	un.add<&Unit::getLiveAlienGeoscape>("getLiveAlienGeoscape");
 
 	un.addDebugDisplay<&debugDisplayScript>();
 }
