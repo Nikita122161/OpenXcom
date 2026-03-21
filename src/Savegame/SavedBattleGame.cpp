@@ -853,7 +853,16 @@ Position SavedBattleGame::getTileCoords(int index) const
  * Gets the currently selected unit
  * @return Pointer to BattleUnit.
  */
-BattleUnit *SavedBattleGame::getSelectedUnit() const
+BattleUnit *SavedBattleGame::getSelectedUnit()
+{
+	return _selectedUnit;
+}
+
+/**
+ * Gets the currently selected unit
+ * @return Pointer to BattleUnit.
+ */
+const BattleUnit *SavedBattleGame::getSelectedUnit() const
 {
 	return _selectedUnit;
 }
